@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HavenFlorist Admin - User Dashboard</title>
+    <style>
+      /* Reset default styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        min-height: 100vh;
+        background: #f1f2f6;
+      }
+
+      /* Sidebar Styles */
+      .sidebar {
+        width: 250px;
+        background-color: #6a1b9a;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .sidebar h1 {
+        color: white;
+        margin-bottom: 40px;
+        font-size: 26px;
+        text-align: center;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .sidebar ul {
+        list-style: none;
+        width: 100%;
+      }
+
+      .sidebar ul li {
+        margin-bottom: 25px;
+        width: 100%;
+      }
+
+      .sidebar ul li a {
+        text-decoration: none;
+        font-size: 18px;
+        color: white;
+        padding: 12px 20px;
+        display: block;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, padding-left 0.3s ease;
+        font-weight: 500;
+      }
+
+      .sidebar ul li a:hover {
+        background-color: #6a1b9a;
+        padding-left: 30px;
+      }
+
+      .sidebar ul li a.active {
+        background-color: #e74c3c;
+      }
+
+      /* Main Content Styles */
+      .main-content {
+        flex-grow: 1;
+        padding: 30px;
+        background-color: #ecf0f1;
+      }
+
+      .main-content h2 {
+        margin-bottom: 30px;
+        font-size: 32px;
+        font-weight: 600;
+        color: #6a1b9a;
+      }
+
+      .main-content p {
+        font-size: 16px;
+        color: #666;
+      }
+
+      /* Card Styles */
+      .card {
+        background-color: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        transition: box-shadow 0.3s ease;
+      }
+
+      .card:hover {
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .card h3 {
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: #6a1b9a;
+      }
+
+      .card p {
+        font-size: 16px;
+        color: #7f8c8d;
+      }
+
+      /* Button Styles */
+      .btn {
+        background-color: #e74c3c;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+
+      .btn:hover {
+        background-color: #c0392b;
+      }
+
+      /* Grid Layout for Overview */
+      .overview-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .overview-card {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .overview-card h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: #2980b9;
+      }
+
+      .overview-card p {
+        font-size: 24px;
+        color: #2c3e50;
+        font-weight: bold;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .overview-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          width: 200px;
+        }
+
+        .main-content {
+          padding: 20px;
+        }
+      }
+
+      /* Styled Add User button */
+      .add-user-btn {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        background-color: #28a745; /* Green color for Add User */
+        color: white;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s;
+        margin-bottom: 20px; /* Space below the button */
+      }
+
+      .add-user-btn:hover {
+        background-color: #218838; /* Darker green on hover */
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center; /* Centering the text in the table */
+      }
+
+      table thead {
+        background-color: #6a1b9a;
+        color: white;
+      }
+
+      table th,
+      table td {
+        padding: 12px 15px; /* Consistent padding */
+        font-size: 0.9rem; /* Smaller font for a cleaner look */
+        border: 1px solid #ddd;
+      }
+
+      table th {
+        font-weight: bold; /* Bold headers */
+      }
+
+      table tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      table tbody tr:hover {
+        background-color: #f1f1f1;
+      }
+
+      button {
+        padding: 8px 12px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: bold;
+        transition: background 0.3s;
+      }
+
+      .edit-btn {
+        background-color: #3498db;
+        color: white;
+      }
+
+      .delete-btn {
+        background-color: #e74c3c;
+        color: white;
+      }
+
+      .edit-btn:hover {
+        background-color: #2980b9;
+      }
+
+      .delete-btn:hover {
+        background-color: #c0392b;
+      }
+
+      /* Modal styles */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+
+      .modal h2 {
+        margin-bottom: 20px;
+      }
+
+      .modal input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 0.9rem; /* Consistent font size */
+      }
+
+      .modal button {
+        margin-top: 10px;
+        padding: 8px 12px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: bold;
+      }
+
+      .modal .cancel-btn {
+        background-color: #e0e0e0;
+        color: black;
+      }
+
+      .modal .cancel-btn:hover {
+        background-color: #bdbdbd;
+      }
+
+      .modal .save-btn {
+        background-color: #3498db;
+        color: white;
+      }
+
+      .modal .save-btn:hover {
+        background-color: #2980b9;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sidebar Section -->
+    <div class="sidebar">
+      <h1>HavenFlorist</h1>
+      <ul>
+        <li><a href="dhasboard admin.html">Dashboard</a></li>
+        <li><a href="dhasboard user.html" class="active">User</a></li>
+        <li><a href="dhasboard product.html">Products</a></li>
+        <li><a href="dhasboardcategory.html">Category</a></li>
+        <li><a href="#">Settings</a></li>
+      </ul>
+    </div>
+    <div class="main-content">
+      <h1>User Management</h1>
+      <button class="add-user-btn" onclick="openAddModal()">Add User</button>
+      <!-- Styled button -->
+      <table>
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Email</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="userTable">
+          <tr>
+            <td>1</td>
+            <td>rafihizaudin@gmail.com</td>
+            <td>user1</td>
+            <td>password1</td>
+            <td>
+              <button class="edit-btn">Edit</button>
+              <button class="delete-btn">Delete</button>
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>user2@example.com</td>
+            <td>user2</td>
+            <td>password2</td>
+            <td>
+              <button class="edit-btn">Edit</button>
+              <button class="delete-btn">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Modal for Adding and Editing User -->
+    <div id="userModal" class="modal">
+      <h2 id="modalTitle">Add User</h2>
+      <form id="userForm">
+        <label for="email">Email:</label><br />
+        <input type="email" id="email" name="email" required /><br />
+        <label for="username">Username:</label><br />
+        <input type="text" id="username" name="username" required /><br />
+        <label for="password">Password:</label><br />
+        <input type="password" id="password" name="password" required /><br />
+        <button
+          type="button"
+          id="saveBtn"
+          class="save-btn"
+          onclick="saveUser()"
+        >
+          Save
+        </button>
+        <button type="button" class="cancel-btn" onclick="closeModal()">
+          Cancel
+        </button>
+      </form>
+    </div>
+
+    <script>
+      let editingRow = null;
+
+      function openAddModal() {
+        document.getElementById("modalTitle").innerText = "Add User";
+        document.getElementById("userForm").reset();
+        editingRow = null;
+        document.getElementById("userModal").style.display = "block";
+      }
+
+      function openEditModal(email, username, password, row) {
+        document.getElementById("modalTitle").innerText = "Edit User";
+        document.getElementById("email").value = email;
+        document.getElementById("username").value = username;
+        document.getElementById("password").value = password;
+        editingRow = row;
+        document.getElementById("userModal").style.display = "block";
+      }
+
+      function closeModal() {
+        document.getElementById("userModal").style.display = "none";
+      }
+
+      function saveUser() {
+        const updatedEmail = document.getElementById("email").value;
+        const updatedUsername = document.getElementById("username").value;
+        const updatedPassword = document.getElementById("password").value;
+
+        if (editingRow) {
+          // Edit existing user
+          editingRow.cells[1].innerText = updatedEmail;
+          editingRow.cells[2].innerText = updatedUsername;
+          editingRow.cells[3].innerText = updatedPassword;
+        } else {
+          // Add new user
+          const newRow = document.createElement("tr");
+          const rowCount = document.getElementById("userTable").rows.length + 1;
+          newRow.innerHTML = `
+                    <td>${rowCount}</td>
+                    <td>${updatedEmail}</td>
+                    <td>${updatedUsername}</td>
+                    <td>${updatedPassword}</td>
+                    <td>
+                        <button class="edit-btn" onclick="openEditModal('${updatedEmail}', '${updatedUsername}', '${updatedPassword}', this.closest('tr'))">Edit</button>
+                        <button class="delete-btn" onclick="deleteUser(this)">Delete</button>
+                    </td>
+                `;
+          document.getElementById("userTable").appendChild(newRow);
+        }
+
+        closeModal();
+      }
+
+      function deleteUser(button) {
+        const row = button.closest("tr");
+        row.remove();
+      }
+
+      document.querySelectorAll(".edit-btn").forEach((button) => {
+        button.addEventListener("click", function () {
+          const row = this.closest("tr");
+          const email = row.cells[1].innerText;
+          const username = row.cells[2].innerText;
+          const password = row.cells[3].innerText;
+
+          openEditModal(email, username, password, row);
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Cart Success</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #f0f2f5;
+      }
+
+      .container {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .success-box {
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+      }
+
+      .icon-check {
+        background-color: #FF8FD9;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto 20px;
+      }
+
+      .checkmark {
+        width: 50px;
+        height: 50px;
+        color: white;
+      }
+
+      h1 {
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-size: 1rem;
+        color: #777;
+        margin-bottom: 20px;
+      }
+
+      .order-details p {
+        color: #333;
+        margin-bottom: 5px;
+      }
+
+      .order-details strong {
+        color: #555;
+      }
+
+      .btn-group {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .btn-primary, .btn-secondary {
+        padding: 12px 24px;
+        font-size: 1rem;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-primary {
+        background-color: #007bff;
+      }
+
+      .btn-primary:hover {
+        background-color: #007bff;
+      }
+
+      .btn-secondary {
+        background-color: #007bff;
+      }
+
+      .btn-secondary:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="success-box">
+        <div class="icon-check">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            class="checkmark"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+        </div>
+        <h1>Produk Ditambahkan ke Keranjang!</h1>
+        <p>
+            Produk pilihan Anda telah berhasil ditambahkan ke keranjang belanja Anda.
+        </p>
+        <div class="btn-group">
+          <button class="btn-primary" onclick="window.location.href='cart.html'">
+            View Cart
+          </button>
+          <button class="btn-secondary" onclick="window.location.href='checkout.html'">
+            Continue Shopping
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

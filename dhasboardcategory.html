@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HavenFlorist Categories</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        display: flex;
+        height: 100vh;
+        background-color: #f8f9fa;
+      }
+
+      /* Sidebar Styles */
+      .sidebar {
+        width: 250px;
+        background-color: #6a1b9a;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .sidebar h1 {
+        color: white;
+        margin-bottom: 40px;
+        font-size: 26px;
+        text-align: center;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .sidebar ul {
+        list-style: none;
+        width: 100%;
+      }
+
+      .sidebar ul li {
+        margin-bottom: 25px;
+        width: 100%;
+      }
+
+      .sidebar ul li a {
+        text-decoration: none;
+        font-size: 18px;
+        color: white;
+        padding: 12px 20px;
+        display: block;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, padding-left 0.3s ease;
+        font-weight: 500;
+      }
+
+      .sidebar ul li a:hover {
+        background-color: #6a1b9a;
+        padding-left: 30px;
+      }
+
+      .sidebar ul li a.active {
+        background-color: #e74c3c;
+      }
+
+      /* Main Content Styles */
+      .main-content {
+        flex-grow: 1;
+        padding: 30px;
+        background-color: #ecf0f1;
+      }
+
+      .main-content h2 {
+        margin-bottom: 30px;
+        font-size: 32px;
+        font-weight: 600;
+        color: #6a1b9a;
+      }
+
+      .main-content p {
+        font-size: 16px;
+        color: #666;
+      }
+
+      /* Button Styles */
+      .btn {
+        background-color: #e74c3c;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+      }
+
+      .btn:hover {
+        background-color: #c0392b;
+      }
+
+      /* Table Styles */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      th,
+      td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th {
+        background-color: #6a1b9a;
+        color: white;
+        font-weight: 600;
+      }
+
+      td {
+        font-size: 16px;
+        color: #2c3e50;
+      }
+
+      tr:hover {
+        background-color: #f1f1f1;
+      }
+
+      .actions {
+        display: flex;
+        gap: 10px;
+      }
+
+      .btn-edit,
+      .btn-delete {
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-weight: bold;
+      }
+
+      .btn-edit {
+        background-color: #2980b9;
+        color: white;
+      }
+
+      .btn-edit:hover {
+        background-color: #1c5980;
+      }
+
+      .btn-delete {
+        background-color: #e74c3c;
+        color: white;
+      }
+
+      .btn-delete:hover {
+        background-color: #c0392b;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        td,
+        th {
+          font-size: 14px;
+          padding: 10px;
+        }
+
+        .btn {
+          padding: 8px 15px;
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sidebar Section -->
+    <div class="sidebar">
+      <h1>HavenFlorist</h1>
+      <ul>
+        <li><a href="dhasboard admin.html">Dashboard</a></li>
+        <li><a href="dhasboard user.html">User</a></li>
+        <li><a href="dhasboard product.html">Products</a></li>
+        <li><a href="dhasboardcategory.html" class="active">Category</a></li>
+        <li><a href="#">Settings</a></li>
+      </ul>
+    </div>
+
+    <!-- Main Content Section -->
+    <div class="main-content">
+      <!-- Button untuk Add Category dengan event onclick -->
+      <button class="btn" id="addCategoryBtn">+ Add Category</button>
+      <h2>Manage Categories</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Category Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Flowers</td>
+            <td>All kinds of flowers available</td>
+            <td>
+              <div class="actions">
+                <button class="btn-edit" data-id="1">Edit</button>
+                <button class="btn-delete">Delete</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Gift Baskets</td>
+            <td>Perfect for every occasion</td>
+            <td>
+              <div class="actions">
+                <button class="btn-edit" data-id="2">Edit</button>
+                <button class="btn-delete">Delete</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- JavaScript untuk fungsi tombol Add Category & Edit Category -->
+    <script>
+      // Ambil elemen tombol "Add Category"
+      const addCategoryBtn = document.getElementById("addCategoryBtn");
+
+      // Tambahkan event listener untuk klik tombol Add Category
+      addCategoryBtn.onclick = function () {
+        // Arahkan pengguna ke halaman form kategori baru
+        window.location.href = "add category.html"; // Ganti dengan URL halaman form kategori Anda
+      };
+
+      // Ambil semua tombol edit
+      const editButtons = document.querySelectorAll(".btn-edit");
+
+      // Tambahkan event listener untuk masing-masing tombol Edit
+      editButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          const categoryId = this.getAttribute("data-id");
+
+          // Arahkan pengguna ke halaman edit kategori
+          window.location.href = `edit category.html`;
+        });
+      });
+    </script>
+  </body>
+</html>

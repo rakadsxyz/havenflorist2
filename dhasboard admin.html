@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HavenFlorist Dashboard</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        display: flex;
+        height: 100vh;
+        background-color: #f8f9fa;
+      }
+
+      /* Sidebar Styles */
+      .sidebar {
+        width: 250px;
+        background-color: #6a1b9a;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .sidebar h1 {
+        color: white;
+        margin-bottom: 40px;
+        font-size: 26px;
+        text-align: center;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .sidebar ul {
+        list-style: none;
+        width: 100%;
+      }
+
+      .sidebar ul li {
+        margin-bottom: 25px;
+        width: 100%;
+      }
+
+      .sidebar ul li a {
+        text-decoration: none;
+        font-size: 18px;
+        color: white;
+        padding: 12px 20px;
+        display: block;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, padding-left 0.3s ease;
+        font-weight: 500;
+      }
+
+      .sidebar ul li a:hover {
+        background-color: #6a1b9a;
+        padding-left: 30px;
+      }
+
+      .sidebar ul li a.active {
+        background-color: #e74c3c;
+      }
+
+      /* Main Content Styles */
+      .main-content {
+        flex-grow: 1;
+        padding: 30px;
+        background-color: #ecf0f1;
+      }
+
+      .main-content h2 {
+        margin-bottom: 30px;
+        font-size: 32px;
+        font-weight: 600;
+        color: #6a1b9a;
+      }
+
+      .main-content p {
+        font-size: 16px;
+        color: #666;
+      }
+
+      /* Card Styles */
+      .card {
+        background-color: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        transition: box-shadow 0.3s ease;
+      }
+
+      .card:hover {
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .card h3 {
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: #6a1b9a;
+      }
+
+      .card p {
+        font-size: 16px;
+        color: #7f8c8d;
+      }
+
+      /* Button Styles */
+      .btn {
+        background-color: #e74c3c;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+
+      .btn:hover {
+        background-color: #c0392b;
+      }
+
+      /* Grid Layout for Overview */
+      .overview-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .overview-card {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .overview-card h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: #2980b9;
+      }
+
+      .overview-card p {
+        font-size: 24px;
+        color: #2c3e50;
+        font-weight: bold;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .overview-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          width: 200px;
+        }
+
+        .main-content {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sidebar Section -->
+    <div class="sidebar">
+      <h1>HavenFlorist</h1>
+      <ul>
+        <li><a href="dhasboard admin.html" class="active">Dashboard</a></li>
+        <li><a href="dhasboard user.html">User</a></li>
+        <li><a href="dhasboard product.html">Products</a></li>
+        <li><a href="dhasboardcategory.html">Category</a></li>
+        <li><a href="#">Settings</a></li>
+      </ul>
+    </div>
+
+    <!-- Main Content Section -->
+    <div class="main-content">
+      <h2>Welcome to HavenFlorist Dashboard</h2>
+      <div class="overview-grid">
+        <div class="overview-card">
+          <h3>Total User</h3>
+          <p>2</p>
+        </div>
+        <div class="overview-card">
+          <h3>Total Product</h3>
+          <p>3</p>
+        </div>
+        <div class="overview-card">
+          <h3>category product</h3>
+          <p>12</p>
+        </div>
+      </div>
+
+      
+  
+      </div>
+    </div>
+  </body>
+</html>

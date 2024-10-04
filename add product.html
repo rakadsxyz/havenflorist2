@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add New Product - HavenFlorist</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f8f9fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .form-container {
+        width: 100%;
+        max-width: 600px;
+        background-color: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        font-size: 28px;
+        font-weight: 600;
+        color: #6a1b9a;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      label {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      input[type="text"],
+      input[type="number"],
+      textarea,
+      select {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+        color: #333;
+      }
+
+      input[type="file"] {
+        margin-bottom: 20px;
+      }
+
+      textarea {
+        resize: none;
+        height: 120px;
+      }
+
+      .btn {
+        background-color: #6a1b9a;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: background-color 0.3s ease;
+        font-weight: bold;
+      }
+
+      .btn:hover {
+        background-color: #4a148c;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group-inline {
+        display: flex;
+        gap: 20px;
+      }
+
+      .form-group-inline .form-group {
+        flex: 1;
+      }
+
+      @media (max-width: 768px) {
+        .form-container {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>Add New Product</h2>
+      <form action="#" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="product-name">Product Name</label>
+          <input
+            type="text"
+            id="product-name"
+            name="product-name"
+            placeholder="Enter product name"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="product-description">Product Description</label>
+          <textarea
+            id="product-description"
+            name="product-description"
+            placeholder="Enter product description"
+            required
+          ></textarea>
+        </div>
+
+        <div class="form-group-inline">
+          <div class="form-group">
+            <label for="product-price">Price (USD)</label>
+            <input
+              type="number"
+              id="product-price"
+              name="product-price"
+              placeholder="Enter product price"
+              min="0"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="product-quantity">Quantity</label>
+            <input
+              type="number"
+              id="product-quantity"
+              name="product-quantity"
+              placeholder="Enter product quantity"
+              min="0"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="product-category">Category</label>
+          <select id="product-category" name="product-category" required>
+            <option value="" disabled selected>Select category</option>
+            <option value="bouquet">Bouquet</option>
+            <option value="single-flower">Single Flower</option>
+            <option value="flower-arrangement">Flower Arrangement</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="product-image">Upload Product Image</label>
+          <input
+            type="file"
+            id="product-image"
+            name="product-image"
+            accept="image/*"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn">Add Product</button>
+      </form>
+    </div>
+  </body>
+</html>
